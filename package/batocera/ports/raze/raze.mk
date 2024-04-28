@@ -53,7 +53,7 @@ else ifeq ($(BR2_PACKAGE_BATOCERA_GLES2),y)
     RAZE_DEPENDENCIES += libgles
 else
     RAZE_CONF_OPTS += -DHAVE_GLES2=OFF
-    RAZE_DEPENDENCIES += libgl
+    # RAZE_DEPENDENCIES += libgl
 endif
 
 define RAZE_INSTALL_TARGET_CMDS

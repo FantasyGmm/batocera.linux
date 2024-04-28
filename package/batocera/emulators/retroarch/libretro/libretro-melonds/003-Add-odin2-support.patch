@@ -1,0 +1,36 @@
+From 5a295a6797e637bfe254f0058fc0c7d01f062776 Mon Sep 17 00:00:00 2001
+From: FantasyGmm <16450052+FantasyGmm@users.noreply.github.com>
+Date: Sat, 27 Apr 2024 12:31:50 +0000
+Subject: [PATCH] Add odin2 support
+
+---
+ Makefile | 13 +++++++++++++
+ 1 file changed, 13 insertions(+)
+
+diff --git a/Makefile b/Makefile
+index 77d951b..74657a7 100644
+--- a/Makefile
++++ b/Makefile
+@@ -320,6 +320,19 @@ else ifeq ($(platform), RK3588)
+    HAVE_THREADS = 1
+    JIT_ARCH = aarch64
+ 
++# 8G2
++else ifeq ($(platform), 8G2)
++   EXT ?= so
++   CPUFLAGS += -mcpu=cortex-a715.cortex-a510 -mtune=cortex-a715.cortex-a510
++   HAVE_NEON = 1
++   TARGET := $(TARGET_NAME)_libretro.$(EXT)
++   fpic := -fPIC
++   SHARED := -shared -Wl,--version-script=$(CORE_DIR)/link.T -Wl,--no-undefined
++   LIBS += -lpthread -lGL
++   HAVE_OPENGL = 1
++   HAVE_THREADS = 1
++   JIT_ARCH = aarch64
++
+ # Orange Pi Zero 2
+ else ifeq ($(platform), orangepizero2)
+    EXT ?= so
+-- 
+2.25.1
+

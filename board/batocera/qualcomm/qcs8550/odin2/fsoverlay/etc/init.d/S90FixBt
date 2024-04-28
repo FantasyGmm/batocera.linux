@@ -1,0 +1,8 @@
+#!/bin/bash
+
+if test $1 = start
+then
+	#Set Bt Mac
+	printf "Set Bluetooth Mac"
+	/usr/bin/bluetoothctl mgmt.public-addr 2C:6D:C1:F1:93:32
+fi

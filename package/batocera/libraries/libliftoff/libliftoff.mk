@@ -9,5 +9,6 @@ LIBLIFTOFF_SITE = https://gitlab.freedesktop.org/emersion/libliftoff/-/releases/
 LIBLIFTOFF_LICENSE = MIT
 LIBLIFTOFF_LICENSE_FILES = LICENSE
 LIBLIFTOFF_INSTALL_STAGING = YES
+LIBLIFTOFF_DEPENDENCIES = libdrm
 
 $(eval $(meson-package))
