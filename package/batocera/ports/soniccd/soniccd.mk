@@ -17,7 +17,7 @@ ifneq ($(BR2_PACKAGE_LIBGLEW),y)
 else
     SONICCD_VERSION = 7a23c39
     SONICCD_BINNAME = RSDKv3
-    SONICCD_DEPENDENCIES += libglew
+    SONICCD_DEPENDENCIES += libglu libglew
 endif
 
 define SONICCD_BUILD_CMDS

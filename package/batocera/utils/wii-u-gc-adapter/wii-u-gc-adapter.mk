@@ -6,6 +6,8 @@
 WII_U_GC_ADAPTER_VERSION = 64d7ddc511adb12f2eb05bd97294bc51cf51bfab
 WII_U_GC_ADAPTER_SITE = $(call github,ToadKing,wii-u-gc-adapter,$(WII_U_GC_ADAPTER_VERSION))
 
+WII_U_GC_ADAPTER_DEPENDENCIES = udev libusb
+
 define WII_U_GC_ADAPTER_BUILD_CMDS
 	$(TARGET_CONFIGURE_OPTS) $(MAKE) CC="$(TARGET_CC)" -C  $(@D)
 endef

@@ -7,7 +7,7 @@
 MANGOHUD_VERSION = a8a0a245e69fbbca5263d2436fd1c04289375498
 MANGOHUD_SITE =  $(call github,flightlessmango,MangoHud,$(MANGOHUD_VERSION))
 
-MANGOHUD_DEPENDENCIES = host-libcurl host-python-mako host-glslang
+MANGOHUD_DEPENDENCIES = host-libcurl host-python-mako host-glslang dbus
 
 ifeq ($(BR2_PACKAGE_LIBDRM),y)
 	MANGOHUD_DEPENDENCIES += libdrm
