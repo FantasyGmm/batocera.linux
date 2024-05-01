@@ -6,7 +6,7 @@
 # Version: GroovyMAME 0.264 - Switchres 2.220b
 MAME_VERSION = gm0264sr220b
 MAME_SITE = $(call github,antonioginer,GroovyMAME,$(MAME_VERSION))
-MAME_DEPENDENCIES = sdl2 sdl2_ttf zlib libpng fontconfig sqlite jpeg flac rapidjson expat glm pulseaudio
+MAME_DEPENDENCIES = sdl2 sdl2_ttf zlib libpng fontconfig sqlite jpeg flac rapidjson expat glm pulseaudio lua libgl
 MAME_LICENSE = MAME
 
 MAME_CROSS_ARCH = unknown
@@ -79,6 +79,10 @@ endif
 
 ifeq ($(BR2_cortex_a73_a53),y)
 MAME_CFLAGS += -mcpu=cortex-a73.cortex-a53 -mtune=cortex-a73.cortex-a53
+endif
+
+ifeq ($(BR2_PACKAGE_BATOCERA_TARGET_ODIN2),y)
+MAME_CFLAGS += -march=armv9-a+i8mm+sm4+sha3+rcpc+crypto+nosve+nosve2
 endif
 
 define MAME_BUILD_CMDS

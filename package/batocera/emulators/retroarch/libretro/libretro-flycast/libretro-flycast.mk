@@ -28,8 +28,13 @@ endif
 
 ifeq ($(BR2_PACKAGE_BATOCERA_VULKAN),y)
     LIBRETRO_FLYCAST_CONF_OPTS += -DUSE_VULKAN=ON
+    LIBRETRO_FLYCAST_DEPENDENCIES += vulkan-headers vulkan-loader slang-shaders
 else
     LIBRETRO_FLYCAST_CONF_OPTS += -DUSE_VULKAN=OFF
+endif
+
+ifeq ($(BR2_PACKAGE_HAS_LIBEGL),y)
+    LIBRETRO_FLYCAST_DEPENDENCIES += libgl
 endif
 
 # RPI: use the legacy Broadcom GLES libraries
