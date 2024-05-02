@@ -1,4 +1,7 @@
 #!/bin/sh
 
+export __GLX_VENDOR_LIBRARY_NAME=mesa
+export MESA_LOADER_DRIVER_OVERRIDE=zink
+export GALLIUM_DRIVER=zink
 SWAY_LOG_FILE=/userdata/system/logs/sway.log
 WLR_LIBINPUT_NO_DEVICES=1 /usr/bin/sway -d > ${SWAY_LOG_FILE} 2>&1
