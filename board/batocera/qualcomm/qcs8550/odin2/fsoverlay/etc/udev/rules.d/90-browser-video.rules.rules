@@ -1,0 +1,2 @@
+SUBSYSTEM=="video4linux", ATTR{name}=="qcom-venus-decoder", SYMLINK+="video-dec%n"
+SUBSYSTEM=="video4linux", ATTR{name}=="qcom-venus-encoder", SYMLINK+="video-enc%n"
