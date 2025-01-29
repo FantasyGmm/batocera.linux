@@ -75,8 +75,15 @@ DOSBOX_STAGING_CXXFLAGS += -march=armv8.2-a+crc -mcpu=cortex-a75.cortex-a55 -mtu
 endif
 
 ifeq ($(BR2_cortex_a76_a55),y)
+ifneq ($(BR2_PACKAGE_BATOCERA_TARGET_SM8550),y)
 DOSBOX_STAGING_CFLAGS   += -march=armv8.2-a+dotprod+rcpc+ssbs+sb -mcpu=cortex-a76.cortex-a55 -mtune=cortex-a76.cortex-a55
 DOSBOX_STAGING_CXXFLAGS += -march=armv8.2-a+dotprod+rcpc+ssbs+sb -mcpu=cortex-a76.cortex-a55 -mtune=cortex-a76.cortex-a55
+endif
+endif
+
+ifeq ($(BR2_PACKAGE_BATOCERA_TARGET_SM8550),y)
+DOSBOX_STAGING_CFLAGS   += -pipe -march=armv9-a+i8mm+sm4+sha3+rcpc+crypto+nosve+nosve2
+DOSBOX_STAGING_CXXFLAGS += -pipe -march=armv9-a+i8mm+sm4+sha3+rcpc+crypto+nosve+nosve2
 endif
 
 define DOSBOX_STAGING_INSTALL_TARGET_CMDS
