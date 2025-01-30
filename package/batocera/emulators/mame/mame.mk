@@ -27,7 +27,7 @@ MAME_JOBS := $(jobs)
 ifeq ($(BR2_ARCH_IS_64),y)
 MAME_CROSS_OPTS += PTR64=1
 ifeq ($(BR2_PACKAGE_BATOCERA_TARGET_SM8550),y)
-# Temp hack for sm8550 architectures : disable WERROR to avoid switchres log warning treated as error
+# Temp hack for sm8550 architectures : disable WERROR to avoid C/CXX flag conflict for armv9 and armv8.x architectures as error
 MAME_CROSS_OPTS += NOWERROR=1
 endif
 else
