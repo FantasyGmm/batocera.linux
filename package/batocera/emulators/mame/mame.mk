@@ -101,13 +101,11 @@ MAME_CFLAGS += -mcpu=cortex-a73.cortex-a53 -mtune=cortex-a73.cortex-a53
 endif
 
 ifeq ($(BR2_cortex_a76_a55),y)
-ifneq ($(BR2_PACKAGE_BATOCERA_TARGET_SM8550),y)
-MAME_CFLAGS += -mcpu=cortex-a76.cortex-a55 -mtune=cortex-a76.cortex-a55
-endif
-endif
-
 ifeq ($(BR2_PACKAGE_BATOCERA_TARGET_SM8550),y)
 MAME_CFLAGS += -pipe -march=armv9-a+i8mm+sm4+sha3+rcpc+crypto+nosve+nosve2
+else
+MAME_CFLAGS += -mcpu=cortex-a76.cortex-a55 -mtune=cortex-a76.cortex-a55
+endif
 endif
 
 define MAME_BUILD_CMDS
