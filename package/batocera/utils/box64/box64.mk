@@ -1,0 +1,41 @@
+################################################################################
+#
+# Box64
+#
+################################################################################
+BOX64_VERSION = v0.3.4
+BOX64_SITE = https://github.com/ptitSeb/box64.git
+BOX64_SITE_METHOD=git
+BOX64_LICENSE = MIT
+BOX64_DEPENDENCIES = sdl_sound cabextract xlib_libXScrnSaver xlib_libXdmcp xlib_libXft libgtk3
+BOX64_SUPPORTS_IN_SOURCE_BUILD = NO
+
+BOX64_CONF_OPTS = -DCMAKE_BUILD_TYPE=Release
+ifeq ($(BR2_PACKAGE_BATOCERA_TARGET_BCM2711),y)
+BOX64_CONF_OPTS+= -DRPI4ARM64=ON
+else ifeq ($(BR2_PACKAGE_BATOCERA_TARGET_BCM2712),y)
+BOX64_CONF_OPTS+= -DRPI5ARM64=ON
+else ifeq ($(BR2_PACKAGE_BATOCERA_TARGET_RK3399),y)
+BOX64_CONF_OPTS+= -DRK3399=ON
+else ifeq ($(BR2_PACKAGE_BATOCERA_TARGET_RK3588),y)
+BOX64_CONF_OPTS+= -DRK3588=ON
+else ifeq ($(BR2_PACKAGE_BATOCERA_TARGET_ODIN),y)
+BOX64_CONF_OPTS+= -DSD845=ON
+else ifeq ($(BR2_PACKAGE_BATOCERA_TARGET_SM8250),y)
+BOX64_CONF_OPTS+= -DSD865=ON
+else ifeq ($(BR2_PACKAGE_BATOCERA_TARGET_SM8550),y)
+BOX64_CONF_OPTS+= -DSD8G2=ON
+else ifeq ($(BR2_aarch64),y)
+BOX64_CONF_OPTS+= -DARM64=ON
+endif
+
+ifeq ($(BR2_PACKAGE_BATOCERA_BOX64_WITH_ARM_DYNAREC),y)
+BOX64_CONF_OPTS+= -DARM_DYNAREC=ON
+endif
+
+ifeq ($(BR2_PACKAGE_BATOCERA_BOX64_WITH_BOX32_MODE),y)
+BOX64_CONF_OPTS+= -DBOX32=ON
+BOX64_CONF_OPTS+= -DBOX32_BINFMT=ON
+endif
+
+$(eval $(cmake-package))
