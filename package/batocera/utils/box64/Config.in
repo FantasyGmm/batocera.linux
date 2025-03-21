@@ -1,0 +1,23 @@
+config BR2_PACKAGE_BATOCERA_BOX64
+    bool "box64"
+    depends on BR2_aarch64
+    select BR2_PACKAGE_NCURSES
+    select BR2_PACKAGE_SDL_SOUND
+    select BR2_PACKAGE_LIBMSPACK
+    select BR2_PACKAGE_CABEXTRACT
+    select BR2_PACKAGE_XLIB_LIBXSCRNSAVER
+    select BR2_PACKAGE_XLIB_LIBXDMCP
+    select BR2_PACKAGE_XLIB_LIBXFT
+    select BR2_PACKAGE_LIBGTK3
+    help
+        Box64 - Linux Userspace x86_64 Emulator with a twist, targeted at ARM64, RV64 and LoongArch Linux devices
+
+config BR2_PACKAGE_BATOCERA_BOX64_WITH_ARM_DYNAREC
+    bool " box64 with ARM_DYNAREC"
+    depends on BR2_aarch64
+
+config BR2_PACKAGE_BATOCERA_BOX64_WITH_BOX32_MODE
+    bool " box64 with box32 mode(experimental, do not use)"
+    depends on BR2_aarch64
+    help
+        Box32 mode is in the making, which aims to support 32-bit binaries on Box64, you can enable it at build time, but do not expect everything to work.
