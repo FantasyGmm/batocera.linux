@@ -110,3 +110,6 @@ laser310:
 quake3:
   emulator: vkquake3
   core:     vkquake3
+switch:
+  emulator: ryujinx
+  core:     ryujinx
